@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuruJi AI - Powered by Google Gemini</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --ayur-saffron: #FF9933;
+            --ayur-green: #138808;
+            --ayur-cream: #F5F5DC;
+            --ayur-brown: #8B4513;
+            --ayur-gold: #D4AF37;
+            --chat-ai-bg: #E8F5E9;
+            --chat-user-bg: #FFF3E0;
+            --gemini-blue: #4285F4;
+            --gemini-green: #34A853;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background-color: var(--ayur-cream);
+            color: #333;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--ayur-green) 0%, var(--ayur-saffron) 100%);
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(to right, white, #FFE5B4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        nav a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .cta-button {
+            background: var(--ayur-gold);
+            color: var(--ayur-brown) !important;
+            font-weight: bold;
+            padding: 10px 25px !important;
+        }
+        
+        /* GuruJi Header */
+        .guruji-header {
+            text-align: center;
+            padding: 40px 5%;
+            background: linear-gradient(135deg, rgba(232, 245, 233, 0.9), rgba(255, 243, 224, 0.9));
+        }
+        
+        .powered-by {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: var(--gemini-blue);
+            font-weight: 600;
+        }
+        
+        .gemini-badge {
+            background: linear-gradient(135deg, var(--gemini-blue), var(--gemini-green));
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .guruji-title {
+            font-size: 2.5rem;
+            color: var(--ayur-brown);
+            margin-bottom: 10px;
+        }
+        
+        .guruji-subtitle {
+            font-size: 1.2rem;
+            color: var(--ayur-green);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Chat Container */
+        .chat-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 5%;
+        }
+        
+        .chat-box {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            border: 3px solid var(--ayur-green);
+        }
+        
+        .chat-header {
+            background: linear-gradient(135deg, var(--ayur-green), var(--ayur-saffron));
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .chat-header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .chat-avatar {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--ayur-saffron);
+            border: 2px solid var(--ayur-gold);
+        }
+        
+        .chat-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 10px;
+            border-radius: 15px;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #4CAF50;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        .chat-messages {
+            flex: 1;
+            padding: 25px;
+            overflow-y: auto;
+            background: #fafafa;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-height: 500px;
+        }
+        
+        .message {
+            max-width: 85%;
+            padding: 18px;
+            border-radius: 15px;
+            position: relative;
+            animation: fadeIn 0.3s ease;
+            line-height: 1.5;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .ai-message {
+            background: var(--chat-ai-bg);
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+            border: 1px solid rgba(19, 136, 8, 0.1);
+        }
+        
+        .user-message {
+            background: var(--chat-user-bg);
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+            border: 1px solid rgba(255, 153, 51, 0.1);
+        }
+        
+        .message-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .ai-message .message-header {
+            color: var(--ayur-green);
+        }
+        
+        .message-content {
+            font-size: 1rem;
+        }
+        
+        .message-content p {
+            margin-bottom: 10px;
+        }
+        
+        .message-content ul, .message-content ol {
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .message-content li {
+            margin-bottom: 5px;
+        }
+        
+        .message-content code {
+            background: rgba(0,0,0,0.05);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+        
+        .message-time {
+            font-size: 0.75rem;
+            color: #888;
+            margin-top: 10px;
+            text-align: right;
+        }
+        
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 10px 15px;
+            background: var(--chat-ai-bg);
+            border-radius: 15px;
+            width: fit-content;
+            margin-top: 5px;
+        }
+        
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--ayur-green);
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+        
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+        
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-10px); }
+        }
+        
+        .input-container {
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .input-container input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .input-container input:focus {
+            outline: none;
+            border-color: var(--ayur-saffron);
+            box-shadow: 0 0 0 3px rgba(255, 153, 51, 0.2);
+        }
+        
+        .send-btn {
+            background: linear-gradient(135deg, var(--ayur-green), var(--ayur-saffron));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 15px 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+        
+        .send-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(19, 136, 8, 0.3);
+        }
+        
+        .send-btn:active {
+            transform: translateY(0);
+        }
+        
+        .suggestions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .suggestion-btn {
+            background: rgba(19, 136, 8, 0.1);
+            border: 1px solid rgba(19, 136, 8, 0.2);
+            color: var(--ayur-green);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .suggestion-btn:hover {
+            background: rgba(19, 136, 8, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .model-info {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 10px;
+            text-align: right;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--ayur-brown);
+            color: white;
+            padding: 40px 5% 20px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .message {
+                max-width: 95%;
+            }
+            
+            .chat-header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .chat-header-left {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-leaf"></i>
+            </div>
+            <div>
+                <h1>AYURVEEZ</h1>
+                <div class="tagline">Where Ayurveda Meets Modern Learning</div>
+            </div>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="guruji.html" class="cta-button">GuruJi AI</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- GuruJi Header -->
+    <section class="guruji-header">
+        <div class="powered-by">
+            <span>Powered by</span>
+            <div class="gemini-badge">
+                <i class="fas fa-brain"></i>
+                Google Gemini AI
+            </div>
+        </div>
+        <h1 class="guruji-title">GuruJi AI with Google Gemini</h1>
+        <p class="guruji-subtitle">Real AI-powered Ayurveda assistant - Ask anything about BAMS, Ayurveda concepts, treatments, herbs, and more!</p>
+        
+        <div class="suggestions">
+            <button class="suggestion-btn" onclick="askQuestion('Explain Tridosha theory in detail')">
+                <i class="fas fa-lightbulb"></i> Tridosha Theory
+            </button>
+            <button class="suggestion-btn" onclick="askQuestion('What are the best herbs for digestion in Ayurveda?')">
+                <i class="fas fa-leaf"></i> Ayurvedic Herbs
+            </button>
+            <button class="suggestion-btn" onclick="askQuestion('Create a study plan for BAMS 1st year exams')">
+                <i class="fas fa-graduation-cap"></i> Study Plan
+            </button>
+            <button class="suggestion-btn" onclick="askQuestion('Difference between Ayurveda and modern medicine')">
+                <i class="fas fa-stethoscope"></i> Ayurveda vs Modern
+            </button>
+        </div>
+    </section>
+
+    <!-- Chat Container -->
+    <div class="chat-container">
+        <div class="chat-box">
+            <div class="chat-header">
+                <div class="chat-header-left">
+                    <div class="chat-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div>
+                        <h3>GuruJi AI Assistant</h3>
+                        <p>Powered by Google Gemini - Free AI Model</p>
+                    </div>
+                </div>
+                <div class="chat-status">
+                    <div class="status-dot"></div>
+                    <span>Connected to Gemini AI</span>
+                </div>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <!-- Initial message -->
+                <div class="message ai-message">
+                    <div class="message-header">
+                        <i class="fas fa-robot"></i> GuruJi AI
+                    </div>
+                    <div class="message-content">
+                        <p>Namaste! 🙏 I'm <strong>GuruJi AI</strong>, your Ayurveda study companion powered by <strong>Google Gemini AI</strong>.</p>
+                        
+                        <p>I can help you with:</p>
+                        <ul>
+                            <li><strong>Ayurveda Concepts:</strong> Tridosha, Panchamahabhuta, Sapta Dhatu</li>
+                            <li><strong>BAMS Studies:</strong> Subject explanations, exam preparation, study plans</li>
+                            <li><strong>Herbal Medicine:</strong> Properties of Ashwagandha, Tulsi, Turmeric, etc.</li>
+                            <li><strong>Treatment Methods:</strong> Panchakarma, dietary recommendations</li>
+                            <li><strong>Research & Analysis:</strong> Case studies, treatment protocols</li>
+                        </ul>
+                        
+                        <p>Try asking me anything about Ayurveda, or use the suggestions above!</p>
+                        
+                        <div class="model-info">
+                            <i class="fas fa-microchip"></i> Using: Google Gemini Pro (Free Tier)
+                        </div>
+                    </div>
+                    <div class="message-time" id="currentTime"></div>
+                </div>
+            </div>
+            
+            <div class="input-container">
+                <input type="text" id="userInput" 
+                       placeholder="Ask anything about Ayurveda, BAMS, herbs, treatments..." 
+                       onkeypress="if(event.key === 'Enter') sendMessage()">
+                <button class="send-btn" onclick="sendMessage()" id="sendBtn">
+                    <i class="fas fa-paper-plane"></i> Ask AI
+                </button>
+            </div>
+        </div>
+        
+        <div class="suggestions" style="margin-top: 20px;">
+            <button class="suggestion-btn" onclick="askQuestion('Explain Charak Samhita in simple terms')">Charak Samhita</button>
+            <button class="suggestion-btn" onclick="askQuestion('What is Panchakarma and its benefits?')">Panchakarma</button>
+            <button class="suggestion-btn" onclick="askQuestion('How to balance Pitta dosha naturally?')">Balance Pitta</button>
+            <button class="suggestion-btn" onclick="askQuestion('Best Ayurvedic remedies for stress and anxiety')">Stress Remedies</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <div style="font-size: 1.8rem; color: var(--ayur-gold); margin-bottom: 20px;">AYURVEEZ</div>
+                <p>BAMS Classes Made Easy</p>
+                <p>Created by Dr. Ravi Shankar Sharma</p>
+                <p style="font-size: 0.9rem; margin-top: 10px; color: #ddd;">
+                    <i class="fas fa-robot"></i> AI Powered by Google Gemini
+                </p>
+            </div>
+            
+            <div>
+                <h4>Contact</h4>
+                <p style="margin-top: 15px;">
+                    <i class="fas fa-phone"></i> 8271890090<br>
+                    <i class="fas fa-envelope"></i> ayurveez@gmail.com<br>
+                    <i class="fas fa-map-marker-alt"></i> Dehradun, Uttarakhand
+                </p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            © 2024 AYURVEEZ. All rights reserved. | AI powered by Google Gemini (Free API)
+        </div>
+    </footer>
+
+    <script>
+        // ==============================================
+        // GOOGLE GEMINI AI INTEGRATION - COMPLETELY FREE
+        // ==============================================
+        
+        // Get your FREE API key from: https://makersuite.google.com/app/apikey
+        // No credit card needed - 60 requests per minute free
+        
+        const GEMINI_API_KEY = 'AIzaSyDbOQiSwkucIE3DtlH5R8IyTKvos-E0vXw'; // REPLACE WITH YOUR FREE KEY
+        const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`;
+        
+        // DOM Elements
+        const chatMessages = document.getElementById('chatMessages');
+        const userInput = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const currentTimeEl = document.getElementById('currentTime');
+        
+        // Set initial time
+        currentTimeEl.textContent = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+        
+        // Conversation history for context
+        let conversationHistory = [];
+        
+        // Send message to Gemini AI
+        async function sendMessage() {
+            const question = userInput.value.trim();
+            if (!question) return;
+            
+            // Add user message to chat
+            addMessage(question, 'user');
+            userInput.value = '';
+            
+            // Show typing indicator
+            showTypingIndicator();
+            
+            // Disable send button while processing
+            sendBtn.disabled = true;
+            sendBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Thinking...';
+            
+            try {
+                // Get response from Gemini AI
+                const aiResponse = await getGeminiResponse(question);
+                
+                // Add AI response to chat
+                addMessage(aiResponse, 'ai');
+                
+                // Add to conversation history (limit to last 10 exchanges)
+                conversationHistory.push(
+                    { role: "user", parts: [{ text: question }] },
+                    { role: "model", parts: [{ text: aiResponse }] }
+                );
+                
+                // Keep only last 5 exchanges (10 messages)
+                if (conversationHistory.length > 10) {
+                    conversationHistory = conversationHistory.slice(-10);
+                }
+                
+            } catch (error) {
+                console.error('AI Error:', error);
+                
+                // Show error message
+                addMessage(`I'm having trouble connecting to the AI. Please try again in a moment. Error: ${error.message}`, 'ai');
+                
+                // Fallback to local responses
+                const fallbackResponse = getFallbackResponse(question);
+                if (fallbackResponse) {
+                    addMessage(fallbackResponse, 'ai');
+                }
+            } finally {
+                // Remove typing indicator and re-enable button
+                removeTypingIndicator();
+                sendBtn.disabled = false;
+                sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Ask AI';
+            }
+        }
+        
+        // Get response from Google Gemini AI
+        async function getGeminiResponse(question) {
+            // Create the prompt with context about Ayurveda
+            const systemPrompt = `You are GuruJi AI, an Ayurveda expert and BAMS study assistant. You provide accurate, educational information about:
+            
+            1. Ayurvedic concepts (Tridosha, Panchamahabhuta, Sapta Dhatu, etc.)
+            2. BAMS curriculum subjects (Padarth Vigyan, Dravyaguna, Rachana Sharir, etc.)
+            3. Ayurvedic herbs and their medicinal properties
+            4. Treatment methods (Panchakarma, dietary recommendations)
+            5. Study tips for BAMS students
+            6. Ayurvedic lifestyle practices
+            7. Comparison with modern medicine when relevant
+            
+            Always respond in a helpful, educational tone. Format your answers with clear paragraphs, bullet points when listing items, and use Ayurvedic terminology with explanations.
+            
+            If asked about non-Ayurveda topics, politely redirect to Ayurveda-related subjects.
+            
+            Current question: "${question}"`;
+            
+            // Prepare the request with conversation history
+            const requestBody = {
+                contents: [
+                    {
+                        role: "user",
+                        parts: [{ text: systemPrompt }]
+                    }
+                ],
+                generationConfig: {
+                    temperature: 0.7,
+                    topK: 1,
+                    topP: 0.95,
+                    maxOutputTokens: 2048,
+                },
+                safetySettings: [
+                    {
+                        category: "HARM_CATEGORY_HARASSMENT",
+                        threshold: "BLOCK_MEDIUM_AND_ABOVE"
+                    },
+                    {
+                        category: "HARM_CATEGORY_HATE_SPEECH",
+                        threshold: "BLOCK_MEDIUM_AND_ABOVE"
+                    },
+                    {
+                        category: "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                        threshold: "BLOCK_MEDIUM_AND_ABOVE"
+                    },
+                    {
+                        category: "HARM_CATEGORY_DANGEROUS_CONTENT",
+                        threshold: "BLOCK_MEDIUM_AND_ABOVE"
+                    }
+                ]
+            };
+            
+            // Add conversation history if available
+            if (conversationHistory.length > 0) {
+                requestBody.contents = [...conversationHistory, requestBody.contents[0]];
+            }
+            
+            const response = await fetch(GEMINI_API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(requestBody)
+            });
+            
+            if (!response.ok) {
+                throw new Error(`API Error: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            
+            if (data.candidates && data.candidates[0] && data.candidates[0].content) {
+                return data.candidates[0].content.parts[0].text;
+            } else {
+                throw new Error('No response from AI');
+            }
+        }
+        
+        // Fallback responses if Gemini fails
+        function getFallbackResponse(question) {
+            const lowerQuestion = question.toLowerCase();
+            
+            // Basic Ayurveda knowledge base
+            const knowledgeBase = {
+                'tridosha': `**Tridosha Theory** is fundamental to Ayurveda. The three doshas are:\n\n1. **Vata** (Air + Space) - Governs movement, creativity, nervous system\n2. **Pitta** (Fire + Water) - Governs metabolism, digestion, intelligence\n3. **Kapha** (Earth + Water) - Governs structure, stability, lubrication\n\nEach person has a unique balance (Prakriti) of these doshas that determines their constitution.`,
+                'ayurveda': `**Ayurveda** is a 5,000-year-old system of natural healing from India. It's derived from Sanskrit words 'Ayur' (life) and 'Veda' (science/knowledge) - literally 'Science of Life'.\n\nKey principles:\n• Prevention over cure\n• Individualized treatment\n• Mind-body connection\n• Natural healing methods\n• Balance of doshas`,
+                'panchakarma': `**Panchakarma** is Ayurveda's premier detoxification treatment. The five procedures are:\n\n1. **Vamana** - Therapeutic vomiting\n2. **Virechana** - Purgation therapy\n3. **Basti** - Medicated enema\n4. **Nasya** - Nasal administration\n5. **Raktamokshana** - Bloodletting\n\nUsed for deep cleansing and rejuvenation.`,
+                'bams': `**BAMS** (Bachelor of Ayurvedic Medicine and Surgery) is a 5.5-year undergraduate degree in India.\n\nKey subjects include:\n• Padarth Vigyan (Philosophy)\n• Rachana Sharir (Anatomy)\n• Dravyaguna (Pharmacology)\n• Rasa Shastra (Iatrochemistry)\n• Panchakarma (Detoxification)\n• Kayachikitsa (Internal Medicine)`,
+                'herb': `**Common Ayurvedic Herbs**:\n\n1. **Ashwagandha** - Adaptogen, reduces stress\n2. **Turmeric** - Anti-inflammatory, antioxidant\n3. **Tulsi** - Immunity booster, respiratory health\n4. **Triphala** - Digestive tonic, detoxifier\n5. **Brahmi** - Brain tonic, memory enhancer\n6. **Ginger** - Digestive aid, anti-nausea\n7. **Guggul** - Cholesterol management\n8. **Neem** - Antibacterial, skin health`,
+                'study': `**Study Tips for BAMS Students**:\n\n1. **Understand concepts** rather than rote learning\n2. **Draw diagrams** for anatomy and processes\n3. **Create mind maps** for complex topics\n4. **Practice Sanskrit** terms daily\n5. **Use mnemonics** for memorization\n6. **Regular revision** is crucial\n7. **Solve previous papers** for exam pattern\n8. **Group study** for difficult topics\n\n**Daily Schedule**:\n• Morning: Theory subjects\n• Afternoon: Practical/diagrams\n• Evening: Revision\n• Night: Light reading`
+            };
+            
+            // Check for keywords
+            for (const [keyword, response] of Object.entries(knowledgeBase)) {
+                if (lowerQuestion.includes(keyword)) {
+                    return response;
+                }
+            }
+            
+            // Default response
+            return `I understand you're asking about "${question}". This appears to be related to Ayurveda. For detailed, accurate information, please try again when the AI connection is restored. In the meantime, you could:\n\n1. Search on authentic Ayurveda websites\n2. Consult Ayurvedic textbooks\n3. Ask a qualified Ayurveda practitioner\n\nWould you like me to explain a common Ayurveda topic instead?`;
+        }
+        
+        // Ask question from suggestion button
+        function askQuestion(question) {
+            userInput.value = question;
+            sendMessage();
+        }
+        
+        // Add message to chat
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}-message`;
+            
+            const formattedText = formatMessage(text);
+            
+            messageDiv.innerHTML = `
+                <div class="message-header">
+                    <i class="fas fa-${sender === 'ai' ? 'robot' : 'user'}"></i> 
+                    ${sender === 'ai' ? 'GuruJi AI' : 'You'}
+                </div>
+                <div class="message-content">${formattedText}</div>
+                <div class="message-time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+            `;
+            
+            chatMessages.appendChild(messageDiv);
+            scrollToBottom();
+        }
+        
+        // Format message text
+        function formatMessage(text) {
+            // Convert markdown-like formatting
+            let formatted = text
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\n/g, '<br>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                .replace(/`(.*?)`/g, '<code>$1</code>');
+            
+            // Convert numbered lists
+            formatted = formatted.replace(/(\d+\.\s.*?)(?=\d+\.|$)/gs, (match) => {
+                return `<li>${match.replace(/^\d+\.\s/, '')}</li>`;
+            });
+            
+            // Wrap lists in ul if present
+            if (formatted.includes('<li>')) {
+                formatted = formatted.replace(/(<li>.*?<\/li>)+/gs, (match) => {
+                    return `<ul>${match}</ul>`;
+                });
+            }
+            
+            return formatted;
+        }
+        
+        // Show typing indicator
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'typing-indicator';
+            typingDiv.id = 'typingIndicator';
+            typingDiv.innerHTML = `
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <span style="margin-left: 10px; color: var(--ayur-green); font-size: 0.9rem;">Gemini AI is thinking...</span>
+            `;
+            chatMessages.appendChild(typingDiv);
+            scrollToBottom();
+        }
+        
+        // Remove typing indicator
+        function removeTypingIndicator() {
+            const typingIndicator = document.getElementById('typingIndicator');
+            if (typingIndicator) {
+                typingIndicator.remove();
+            }
+        }
+        
+        // Scroll to bottom of chat
+        function scrollToBottom() {
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        // Handle Enter key
+        userInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+        
+        // API Key validation
+        function validateApiKey() {
+            if (!GEMINI_API_KEY || GEMINI_API_KEY.length < 30 || GEMINI_API_KEY.includes('YOUR')) {
+                const errorMsg = document.createElement('div');
+                errorMsg.className = 'message ai-message';
+                errorMsg.innerHTML = `
+                    <div class="message-header">
+                        <i class="fas fa-exclamation-triangle"></i> Setup Required
+                    </div>
+                    <div class="message-content">
+                        <p><strong>To use GuruJi AI with real Google Gemini, you need a FREE API key:</strong></p>
+                        <ol>
+                            <li>Go to: <a href="https://makersuite.google.com/app/apikey" target="_blank">Google AI Studio</a></li>
+                            <li>Sign in with Google account (free)</li>
+                            <li>Click "Get API Key"</li>
+                            <li>Create new key or use existing</li>
+                            <li>Copy the key and replace in code:<br>
+                            <code>const GEMINI_API_KEY = 'YOUR_NEW_KEY_HERE';</code></li>
+                        </ol>
+                        <p><strong>Until then, I'll use my basic knowledge base.</strong> Try asking about: Tridosha, Ayurveda, BAMS, or herbs.</p>
+                    </div>
+                `;
+                chatMessages.appendChild(errorMsg);
+                scrollToBottom();
+                return false;
+            }
+            return true;
+        }
+        
+        // Check API key on load
+        document.addEventListener('DOMContentLoaded', function() {
+            validateApiKey();
+            
+            // Add sample questions
+            userInput.placeholder = "Try: 'Explain Panchamahabhuta' or 'Ayurvedic herbs for immunity'";
+        });
+        
+        // For testing without API key - use this simple version
+        if (!GEMINI_API_KEY || GEMINI_API_KEY.includes('YOUR')) {
+            // Override sendMessage to use fallback
+            const originalSendMessage = sendMessage;
+            sendMessage = function() {
+                const question = userInput.value.trim();
+                if (!question) return;
+                
+                addMessage(question, 'user');
+                userInput.value = '';
+                
+                showTypingIndicator();
+                sendBtn.disabled = true;
+                sendBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Thinking...';
+                
+                setTimeout(() => {
+                    removeTypingIndicator();
+                    const response = getFallbackResponse(question);
+                    addMessage(response, 'ai');
+                    sendBtn.disabled = false;
+                    sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Ask AI';
+                }, 1000);
+            };
+        }
+    </script>
+</body>
+</html>
