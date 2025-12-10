@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AYURVEEZ Blog - Ayurveda Insights & Study Tips</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --ayur-saffron: #FF9933;
+            --ayur-green: #138808;
+            --ayur-cream: #F5F5DC;
+            --ayur-brown: #8B4513;
+            --ayur-gold: #D4AF37;
+            --text-dark: #333333;
+            --text-light: #666666;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Noto Sans Devanagari', sans-serif;
+        }
+        
+        body {
+            background-color: var(--ayur-cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--ayur-green) 0%, var(--ayur-saffron) 100%);
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(to right, white, #FFE5B4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--ayur-gold);
+        }
+        
+        .tagline {
+            font-style: italic;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        nav a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .cta-button {
+            background: var(--ayur-gold);
+            color: var(--ayur-brown) !important;
+            font-weight: bold;
+            padding: 10px 25px !important;
+        }
+        
+        .active {
+            background: rgba(255,255,255,0.2);
+            font-weight: 600;
+        }
+        
+        /* Blog Hero */
+        .blog-hero {
+            background: linear-gradient(rgba(19, 136, 8, 0.9), rgba(255, 153, 51, 0.9)), 
+                        url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 5% 80px;
+            margin-bottom: 60px;
+        }
+        
+        .blog-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .blog-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.95;
+        }
+        
+        .search-box {
+            max-width: 600px;
+            margin: 40px auto 0;
+            position: relative;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 18px 25px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .search-box button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--ayur-saffron);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .search-box button:hover {
+            background: #e68900;
+        }
+        
+        /* Main Content */
+        .main-container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5% 60px;
+            gap: 40px;
+        }
+        
+        /* Blog Posts */
+        .blog-posts {
+            flex: 2.5;
+        }
+        
+        .section-title {
+            color: var(--ayur-brown);
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: var(--ayur-saffron);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .card-image {
+            height: 220px;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .blog-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+        
+        .card-content {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-category {
+            display: inline-block;
+            background: var(--ayur-green);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            align-self: flex-start;
+        }
+        
+        .category-study { background: var(--ayur-green); }
+        .category-health { background: var(--ayur-saffron); }
+        .category-herbs { background: var(--ayur-brown); }
+        .category-tips { background: var(--ayur-gold); color: var(--ayur-brown); }
+        
+        .card-title {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            line-height: 1.4;
+            flex: 1;
+        }
+        
+        .card-title a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .card-title a:hover {
+            color: var(--ayur-saffron);
+        }
+        
+        .card-excerpt {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .author-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: var(--ayur-cream);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--ayur-brown);
+        }
+        
+        .read-more {
+            color: var(--ayur-green);
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.3s;
+        }
+        
+        .read-more:hover {
+            gap: 10px;
+            color: var(--ayur-saffron);
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .sidebar-widget {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        
+        .widget-title {
+            color: var(--ayur-brown);
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--ayur-cream);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .widget-title i {
+            color: var(--ayur-saffron);
+        }
+        
+        .categories-list {
+            list-style: none;
+        }
+        
+        .categories-list li {
+            margin-bottom: 15px;
+        }
+        
+        .categories-list a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-dark);
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .categories-list a:hover {
+            background: var(--ayur-cream);
+            color: var(--ayur-green);
+            padding-left: 20px;
+        }
+        
+        .category-count {
+            background: var(--ayur-cream);
+            color: var(--ayur-brown);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .popular-posts {
+            list-style: none;
+        }
+        
+        .popular-post {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .popular-post:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .popular-post-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .popular-post-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .popular-post-content h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        
+        .popular-post-content h4 a {
+            color: var(--text-dark);
+            text-decoration: none;
+        }
+        
+        .popular-post-content h4 a:hover {
+            color: var(--ayur-saffron);
+        }
+        
+        .popular-post-date {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .tags-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tag {
+            background: var(--ayur-cream);
+            color: var(--ayur-brown);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .tag:hover {
+            background: var(--ayur-green);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .newsletter-form {
+            background: linear-gradient(135deg, var(--ayur-green), var(--ayur-saffron));
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .newsletter-form h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .newsletter-form p {
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+        
+        .newsletter-form input {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+        
+        .newsletter-form button {
+            width: 100%;
+            padding: 15px;
+            background: var(--ayur-gold);
+            color: var(--ayur-brown);
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .newsletter-form button:hover {
+            background: #e6c260;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 60px;
+        }
+        
+        .page-number {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 8px;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .page-number:hover {
+            background: var(--ayur-green);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .page-number.active {
+            background: var(--ayur-saffron);
+            color: white;
+        }
+        
+        /* Featured Post */
+        .featured-post {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 60px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        @media (min-width: 992px) {
+            .featured-post {
+                flex-direction: row;
+                min-height: 400px;
+            }
+            
+            .featured-image {
+                flex: 1;
+                height: auto;
+            }
+            
+            .featured-content {
+                flex: 1;
+            }
+        }
+        
+        .featured-image {
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .featured-content {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .featured-badge {
+            background: var(--ayur-gold);
+            color: var(--ayur-brown);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            align-self: flex-start;
+        }
+        
+        .featured-content h2 {
+            font-size: 2.2rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        .featured-content p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--ayur-brown);
+            color: white;
+            padding: 60px 5% 30px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            color: var(--ayur-gold);
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--ayur-saffron);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .main-container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 30px;
+            }
+            
+            .sidebar-widget {
+                margin-bottom: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .blog-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .blog-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .card-content {
+                padding: 20px;
+            }
+            
+            .featured-content {
+                padding: 25px;
+            }
+            
+            .featured-content h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-leaf"></i>
+            </div>
+            <div>
+                <h1>AYURVEEZ</h1>
+                <div class="tagline">Where Ayurveda Meets Modern Learning</div>
+            </div>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="resources.html">Free Resources</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="guruji.html">GuruJi AI</a></li>
+                <li><a href="contact.html" class="cta-button">Enroll Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Blog Hero -->
+    <section class="blog-hero">
+        <h1>AYURVEEZ Blog</h1>
+        <p>Insights, tips, and knowledge for BAMS students and Ayurveda enthusiasts. Stay updated with the latest in Ayurvedic education.</p>
+        
+        <div class="search-box">
+            <input type="text" placeholder="Search articles on Ayurveda, BAMS, herbs...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Blog Posts -->
+        <div class="blog-posts">
+            <!-- Featured Post -->
+            <div class="featured-post">
+                <div class="featured-image">
+                    <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ayurvedic Study">
+                </div>
+                <div class="featured-content">
+                    <div class="featured-badge"><i class="fas fa-star"></i> FEATURED</div>
+                    <h2>How to Master BAMS 1st Year: A Comprehensive Guide</h2>
+                    <p>Starting your BAMS journey? Learn the most effective study strategies, time management techniques, and resources to excel in your first year of Ayurvedic medicine.</p>
+                    <a href="#" class="read-more">
+                        Read Full Article <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <h2 class="section-title">Latest Articles</h2>
+            
+            <div class="posts-grid">
+                <!-- Article 1 -->
+                <article class="blog-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1542736667-069246bdbc6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tridosha Theory">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-category category-study">Study Guide</span>
+                        <h3 class="card-title">
+                            <a href="#">Understanding Tridosha Theory: Vata, Pitta, Kapha Explained</a>
+                        </h3>
+                        <p class="card-excerpt">Dive deep into the fundamental concept of Ayurveda - the Tridosha theory. Learn about Vata, Pitta, and Kapha characteristics, imbalances, and balancing techniques.</p>
+                        <div class="card-meta">
+                            <div class="author">
+                                <div class="author-avatar">
+                                    <i class="fas fa-user-md"></i>
+                                </div>
+                                <span>Dr. Ravi Sharma</span>
+                            </div>
+                            <span>5 min read</span>
+                        </div>
+                        <a href="#" class="read-more">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="blog-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ayurvedic Herbs">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-category category-herbs">Herbal Medicine</span>
+                        <h3 class="card-title">
+                            <a href="#">Top 10 Ayurvedic Herbs Every BAMS Student Should Know</a>
+                        </h3>
+                        <p class="card-excerpt">From Ashwagandha to Turmeric, discover the medicinal properties, uses, and preparations of essential Ayurvedic herbs with practical applications.</p>
+                        <div class="card-meta">
+                            <div class="author">
+                                <div class="author-avatar">
+                                    <i class="fas fa-user-md"></i>
+                                </div>
+                                <span>Dr. Priya Singh</span>
+                            </div>
+                            <span>7 min read</span>
+                        </div>
+                        <a href="#" class="read-more">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="blog-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Exam Preparation">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-category category-tips">Exam Tips</span>
+                        <h3 class="card-title">
+                            <a href="#">Ayurveda Exam Preparation: Last-Month Strategy That Works</a>
+                        </h3>
+                        <p class="card-excerpt">Struggling with Ayurveda exam preparation? Learn effective revision techniques, time management, and answer-writing strategies for top scores.</p>
+                        <div class="card-meta">
+                            <div class="author">
+                                <div class="author-avatar">
+                                    <i class="fas fa-user-graduate"></i>
+                                </div>
+                                <span>Anjali Verma</span>
+                            </div>
+                            <span>6 min read</span>
+                        </div>
+                        <a href="#" class="read-more">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Article 4 -->
+                <article class="blog-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Panchakarma">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-category category-health">Treatment Methods</span>
+                        <h3 class="card-title">
+                            <a href="#">Panchakarma Demystified: Complete Guide to Ayurvedic Detox</a>
+                        </h3>
+                        <p class="card-excerpt">Understand the five purification procedures of Panchakarma, their benefits, indications, and modern applications in treating various disorders.</p>
+                        <div class="card-meta">
+                            <div class="author">
+                                <div class="author-avatar">
+                                    <i class="fas fa-user-md"></i>
+                                </div>
+                                <span>Dr. Arjun Patel</span>
+                            </div>
+                            <span>8 min read</span>
+                        </div>
+                        <a href="#" class="read-more">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Article 5 -->
+                <article class="blog-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Yoga and Ayurveda">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-category category-health">Lifestyle</span>
+                        <h3 class="card-title">
+                            <a href="#">Yoga & Ayurveda: The Perfect Combination for Student Wellness</a>
+                        </h3>
+                        <p class="card-excerpt">Discover how integrating specific yoga asanas with Ayurvedic practices can enhance concentration, reduce stress, and improve overall health for students.</p>
+                        <div class="card-meta">
+                            <div class="author">
+                                <div class="author-avatar">
+                                    <i class="fas fa-user-md"></i>
+                                </div>
+                                <span>Dr. Meera Nair</span>
+                            </div>
+                            <span>5 min read</span>
+                        </div>
+                        <a href="#" class="read-more">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Article 6 -->
+                <article class="blog-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1584473457409-ae5c91d7d8b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sanskrit Learning">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-category category-study">Study Guide</span>
+                        <h3 class="card-title">
+                            <a href="#">Mastering Sanskrit for Ayurveda: Tips and Resources</a>
+                        </h3>
+                        <p class="card-excerpt">Struggling with Sanskrit in BAMS? Learn effective methods to understand and memorize Sanskrit terms, shlokas, and their meanings for Ayurvedic studies.</p>
+                        <div class="card-meta">
+                            <div class="author">
+                                <div class="author-avatar">
+                                    <i class="fas fa-language"></i>
+                                </div>
+                                <span>Prof. Sanjay Kumar</span>
+                            </div>
+                            <span>6 min read</span>
+                        </div>
+                        <a href="#" class="read-more">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <a href="#" class="page-number active">1</a>
+                <a href="#" class="page-number">2</a>
+                <a href="#" class="page-number">3</a>
+                <a href="#" class="page-number">4</a>
+                <a href="#" class="page-number">
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- Categories Widget -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title"><i class="fas fa-folder"></i> Categories</h3>
+                <ul class="categories-list">
+                    <li>
+                        <a href="#">
+                            <span>Study Guides & Tips</span>
+                            <span class="category-count">12</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>Ayurvedic Concepts</span>
+                            <span class="category-count">8</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>Herbal Medicine</span>
+                            <span class="category-count">15</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>Exam Preparation</span>
+                            <span class="category-count">6</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>Treatment Methods</span>
+                            <span class="category-count">9</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>Student Wellness</span>
+                            <span class="category-count">7</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>Research & Case Studies</span>
+                            <span class="category-count">5</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Popular Posts Widget -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title"><i class="fas fa-fire"></i> Popular Posts</h3>
+                <ul class="popular-posts">
+                    <li class="popular-post">
+                        <div class="popular-post-img">
+                            <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Herbs">
+                        </div>
+                        <div class="popular-post-content">
+                            <h4><a href="#">Ashwagandha: The Ultimate Stress Buster for Students</a></h4>
+                            <div class="popular-post-date">
+                                <i class="far fa-calendar"></i> Mar 15, 2024
+                            </div>
+                        </div>
+                    </li>
+                    <li class="popular-post">
+                        <div class="popular-post-img">
+                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Exam">
+                        </div>
+                        <div class="popular-post-content">
+                            <h4><a href="#">How to Score 90+ in BAMS University Exams</a></h4>
+                            <div class="popular-post-date">
+                                <i class="far fa-calendar"></i> Feb 28, 2024
+                            </div>
+                        </div>
+                    </li>
+                    <li class="popular-post">
+                        <div class="popular-post-img">
+                            <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Panchakarma">
+                        </div>
+                        <div class="popular-post-content">
+                            <h4><a href="#">Home Remedies Based on Ayurvedic Principles</a></h4>
+                            <div class="popular-post-date">
+                                <i class="far fa-calendar"></i> Feb 10, 2024
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Tags Widget -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title"><i class="fas fa-tags"></i> Trending Tags</h3>
+                <div class="tags-cloud">
+                    <a href="#" class="tag">Tridosha</a>
+                    <a href="#" class="tag">BAMS</a>
+                    <a href="#" class="tag">Herbs</a>
+                    <a href="#" class="tag">Panchakarma</a>
+                    <a href="#" class="tag">Study Tips</a>
+                    <a href="#" class="tag">Sanskrit</a>
+                    <a href="#" class="tag">Charak Samhita</a>
+                    <a href="#" class="tag">Ayurvedic Diet</a>
+                    <a href="#" class="tag">Exam Prep</a>
+                    <a href="#" class="tag">Yoga</a>
+                    <a href="#" class="tag">Medicinal Plants</a>
+                    <a href="#" class="tag">Student Health</a>
+                </div>
+            </div>
+
+            <!-- Newsletter Widget -->
+            <div class="sidebar-widget newsletter-form">
+                <h3>Subscribe to Our Blog</h3>
+                <p>Get the latest Ayurveda insights, study tips, and articles directly in your inbox.</p>
+                <form id="newsletterForm">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit">Subscribe Now</button>
+                </form>
+                <p style="font-size: 0.8rem; margin-top: 10px;">No spam, unsubscribe anytime.</p>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <div class="footer-logo">AYURVEEZ</div>
+                <p>BAMS Classes Made Easy</p>
+                <p>Created by Dr. Ravi Shankar Sharma<br>
+                BAMS 2nd Prof, Uttarakhand Ayurveda University</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div>
+                <h4>Quick Links</h4>
+                <ul style="list-style: none; margin-top: 15px;">
+                    <li><a href="index.html" style="color: white; text-decoration: none; display: block; padding: 5px 0;">Home</a></li>
+                    <li><a href="courses.html" style="color: white; text-decoration: none; display: block; padding: 5px 0;">Courses</a></li>
+                    <li><a href="blog.html" style="color: white; text-decoration: none; display: block; padding: 5px 0;">Blog</a></li>
+                    <li><a href="guruji.html" style="color: white; text-decoration: none; display: block; padding: 5px 0;">GuruJi AI</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4>Contact Us</h4>
+                <p style="margin-top: 15px;">
+                    <i class="fas fa-phone"></i> 8271890090<br>
+                    <i class="fas fa-envelope"></i> ayurveez@gmail.com<br>
+                    <i class="fas fa-map-marker-alt"></i> Dehradun, Uttarakhand
+                </p>
+                <a href="contact.html" class="btn btn-primary" style="margin-top: 15px; background: var(--ayur-saffron); color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; display: inline-block;">
+                    <i class="fas fa-headset"></i> Get Support
+                </a>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            © 2024 AYURVEEZ. All rights reserved. | BAMS Classes Made Easy
+        </div>
+    </footer>
+
+    <script>
+        // Blog Search Functionality
+        document.querySelector('.search-box button').addEventListener('click', function() {
+            const searchTerm = document.querySelector('.search-box input').value;
+            if (searchTerm.trim()) {
+                alert(`Searching for: "${searchTerm}"\n\nIn a real implementation, this would filter blog articles.`);
+            }
+        });
+
+        // Newsletter Subscription
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            
+            if (email) {
+                alert(`Thank you for subscribing with: ${email}\n\nYou'll receive our latest Ayurveda articles and updates.`);
+                this.reset();
+            }
+        });
+
+        // Category Filtering (Example)
+        document.querySelectorAll('.categories-list a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const category = this.querySelector('span:first-child').textContent;
+                alert(`Loading articles in category: ${category}`);
+                
+                // In real implementation, this would filter articles by category
+                document.querySelectorAll('.blog-card').forEach(card => {
+                    card.style.display = 'block';
+                });
+            });
+        });
+
+        // Tag Click Handler
+        document.querySelectorAll('.tag').forEach(tag => {
+            tag.addEventListener('click', function(e) {
+                e.preventDefault();
+                const tagName = this.textContent;
+                alert(`Searching articles tagged: ${tagName}`);
+                
+                // In real implementation, this would filter by tag
+            });
+        });
+
+        // Article Click Tracking
+        document.querySelectorAll('.card-title a, .read-more').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // In real implementation, this would track clicks
+                console.log('Article clicked:', this.closest('.blog-card').querySelector('.card-title').textContent);
+            });
+        });
+
+        // Popular Posts Click Handler
+        document.querySelectorAll('.popular-post-content h4 a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const postTitle = this.textContent;
+                alert(`Loading article: ${postTitle}\n\nIn a real blog, this would open the full article.`);
+            });
+        });
+
+        // Pagination Click Handler
+        document.querySelectorAll('.page-number').forEach(page => {
+            page.addEventListener('click', function(e) {
+                e.preventDefault();
+                const pageNum = this.textContent;
+                
+                if (pageNum === '→' || pageNum.includes('fa-chevron-right')) {
+                    alert('Loading next page...');
+                } else {
+                    alert(`Loading page ${pageNum}...`);
+                }
+                
+                // Remove active class from all pages
+                document.querySelectorAll('.page-number').forEach(p => {
+                    p.classList.remove('active');
+                });
+                
+                // Add active class to clicked page
+                this.classList.add('active');
+            });
+        });
+
+        // Featured Post Click Handler
+        document.querySelector('.featured-content .read-more').addEventListener('click', function(e) {
+            e.preventDefault();
+            const title = document.querySelector('.featured-content h2').textContent;
+            alert(`Loading featured article: ${title}`);
+        });
+
+        // Smooth Scroll for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId !== '#') {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Highlight Active Category on Scroll
+        window.addEventListener('scroll', function() {
+            // In a real implementation, this would highlight categories based on visible articles
+        });
+
+        // Initialize with some interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('AYURVEEZ Blog loaded successfully');
+            
+            // Set current year in copyright (optional)
+            const yearSpan = document.querySelector('.copyright');
+            if (yearSpan) {
+                const currentYear = new Date().getFullYear();
+                yearSpan.innerHTML = yearSpan.innerHTML.replace('2024', currentYear);
+            }
+        });
+    </script>
+</body>
+</html>
