@@ -353,6 +353,52 @@
             color: white;
         }
         
+        /* Payment Details Styles */
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .payment-method-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--ayur-saffron);
+        }
+        
+        .payment-method-card.bank {
+            border-top-color: var(--ayur-green);
+        }
+        
+        .payment-detail {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 3px solid var(--ayur-gold);
+        }
+        
+        .payment-detail strong {
+            color: var(--ayur-brown);
+            display: inline-block;
+            min-width: 150px;
+        }
+        
+        .upi-id {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--ayur-green);
+            background: #f0fff0;
+            padding: 12px;
+            border-radius: 5px;
+            text-align: center;
+            margin: 15px 0;
+            border: 1px dashed #4CAF50;
+        }
+        
         /* UPDATED FOOTER LAYOUT */
         .footer {
             background: var(--ayur-brown);
@@ -810,6 +856,11 @@
                 margin-top: 20px;
             }
             
+            /* Payment methods mobile */
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+            
             /* UPDATED MOBILE FOOTER - Quick Links and Contact Us side by side */
             .footer-content {
                 flex-direction: column;
@@ -1157,123 +1208,146 @@
         </div>
     </section>
 
-      <!-- Payment Process -->
+    <!-- UPDATED: How to Enroll Section with Payment Details -->
     <section style="padding: 60px 5%; background: white;">
         <div class="section-title">How to Enroll</div>
-        <div style="max-width: 900px; margin: 0 auto; background: var(--ayur-cream); padding: 40px; border-radius: 15px; border: 2px solid var(--ayur-green);">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: center;">
+        <div style="max-width: 1000px; margin: 0 auto; background: var(--ayur-cream); padding: 40px; border-radius: 15px; border: 2px solid var(--ayur-green); box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
+            
+            <!-- Enrollment Steps -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; text-align: center; margin-bottom: 50px;">
                 <div>
-                    <div style="width: 60px; height: 60px; background: var(--ayur-saffron); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 15px;">1</div>
-                    <h4>Choose Course</h4>
-                    <p>Select Proff or Subject</p>
+                    <div style="width: 70px; height: 70px; background: var(--ayur-saffron); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin: 0 auto 15px; font-weight: bold;">1</div>
+                    <h4 style="color: var(--ayur-brown); margin-bottom: 10px;">Choose Course</h4>
+                    <p>Select Proff or Individual Subject</p>
                 </div>
                 <div>
-                    <div style="width: 60px; height: 60px; background: var(--ayur-saffron); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 15px;">2</div>
-                    <h4>Make Payment</h4>
-                    <p>Via UPI/Bank Transfer</p>
+                    <div style="width: 70px; height: 70px; background: var(--ayur-saffron); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin: 0 auto 15px; font-weight: bold;">2</div>
+                    <h4 style="color: var(--ayur-brown); margin-bottom: 10px;">Make Payment</h4>
+                    <p>Via UPI or Bank Transfer</p>
                 </div>
                 <div>
-                    <div style="width: 60px; height: 60px; background: var(--ayur-saffron); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 15px;">3</div>
-                    <h4>Send Screenshot</h4>
+                    <div style="width: 70px; height: 70px; background: var(--ayur-saffron); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin: 0 auto 15px; font-weight: bold;">3</div>
+                    <h4 style="color: var(--ayur-brown); margin-bottom: 10px;">Send Screenshot</h4>
                     <p>WhatsApp: 9376884568</p>
                 </div>
                 <div>
-                    <div style="width: 60px; height: 60px; background: var(--ayur-saffron); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 15px;">4</div>
-                    <h4>Get Access</h4>
-                    <p>Unique code for dashboard</p>
+                    <div style="width: 70px; height: 70px; background: var(--ayur-saffron); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin: 0 auto 15px; font-weight: bold;">4</div>
+                    <h4 style="color: var(--ayur-brown); margin-bottom: 10px;">Get Access</h4>
+                    <p>Login credentials within 2-4 hours</p>
                 </div>
             </div>
             
-            <!-- Payment Details Section -->
-            <div style="margin-top: 40px; padding: 30px; background: white; border-radius: 10px; border: 1px solid #ddd;">
-                <h4 style="text-align: center; color: var(--ayur-brown); margin-bottom: 30px; font-size: 1.5rem;">Payment Details</h4>
+            <!-- Payment Details -->
+            <div style="margin-bottom: 40px;">
+                <h3 style="text-align: center; color: var(--ayur-brown); margin-bottom: 30px; font-size: 1.8rem;">
+                    <i class="fas fa-credit-card" style="margin-right: 10px;"></i>Payment Details
+                </h3>
                 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <div class="payment-methods">
                     <!-- UPI Payment -->
-                    <div style="background: #f9f9f9; padding: 25px; border-radius: 10px; border-left: 4px solid var(--ayur-saffron);">
-                        <h5 style="color: var(--ayur-green); margin-bottom: 15px; font-size: 1.2rem;">
-                            <i class="fas fa-mobile-alt" style="margin-right: 10px;"></i>UPI Payment
-                        </h5>
-                        <div style="background: white; padding: 15px; border-radius: 8px; margin-top: 15px; text-align: center; border: 1px dashed var(--ayur-saffron);">
-                            <p style="margin-bottom: 10px; font-weight: 600; color: var(--ayur-brown);">UPI ID:</p>
-                            <div style="font-size: 1.3rem; font-weight: bold; color: var(--ayur-green); padding: 10px; background: #f0fff0; border-radius: 5px; margin-bottom: 15px;">
-                                thersk@axl
-                            </div>
-                            <p style="font-size: 0.9rem; color: #666; margin-bottom: 10px;">
-                                Scan or enter this UPI ID in any UPI app
+                    <div class="payment-method-card">
+                        <h4 style="color: var(--ayur-green); margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-mobile-alt"></i> UPI Payment
+                        </h4>
+                        <div style="text-align: center;">
+                            <p style="margin-bottom: 15px; color: var(--ayur-brown); font-weight: 500;">Scan or enter this UPI ID:</p>
+                            <div class="upi-id">thersk@axl</div>
+                            <p style="font-size: 0.9rem; color: #666; margin-top: 15px;">
+                                <i class="fas fa-info-circle" style="color: var(--ayur-saffron);"></i>
+                                Also available on G-Pay: <strong>8271890090</strong>
                             </p>
                         </div>
-                        <div style="margin-top: 20px; padding: 15px; background: #fff8e1; border-radius: 8px; border-left: 3px solid #ffb300;">
-                            <p style="font-size: 0.9rem; margin: 0; color: #5d4037;">
-                                <strong>Note:</strong> Also available on G-Pay: <strong>8271890090</strong>
+                        <div style="margin-top: 20px; padding: 15px; background: #e8f5e9; border-radius: 8px; border-left: 4px solid #4CAF50;">
+                            <p style="margin: 0; font-size: 0.9rem; color: #2e7d32;">
+                                <strong><i class="fas fa-bolt" style="margin-right: 5px;"></i>Fast & Recommended:</strong> 
+                                Instant payment confirmation
                             </p>
                         </div>
                     </div>
                     
                     <!-- Bank Transfer -->
-                    <div style="background: #f9f9f9; padding: 25px; border-radius: 10px; border-left: 4px solid var(--ayur-green);">
-                        <h5 style="color: var(--ayur-green); margin-bottom: 15px; font-size: 1.2rem;">
-                            <i class="fas fa-university" style="margin-right: 10px;"></i>Bank Transfer
-                        </h5>
-                        <div style="background: white; padding: 20px; border-radius: 8px; margin-top: 15px; border: 1px dashed var(--ayur-green);">
-                            <table style="width: 100%; border-collapse: collapse;">
-                                <tr>
-                                    <td style="padding: 8px 0; border-bottom: 1px solid #eee; font-weight: 600; color: var(--ayur-brown); width: 140px;">Bank Name:</td>
-                                    <td style="padding: 8px 0; border-bottom: 1px solid #eee;">State Bank of India (SBI)</td>
-                                </tr>
-                                <tr>
-                                    <td style="padding: 8px 0; border-bottom: 1px solid #eee; font-weight: 600; color: var(--ayur-brown);">Account Number:</td>
-                                    <td style="padding: 8px 0; border-bottom: 1px solid #eee; font-family: monospace; font-size: 1.1rem;">41139275178</td>
-                                </tr>
-                                <tr>
-                                    <td style="padding: 8px 0; border-bottom: 1px solid #eee; font-weight: 600; color: var(--ayur-brown);">IFSC Code:</td>
-                                    <td style="padding: 8px 0; border-bottom: 1px solid #eee; font-family: monospace; font-size: 1.1rem;">SBIN0061746</td>
-                                </tr>
-                                <tr>
-                                    <td style="padding: 8px 0; font-weight: 600; color: var(--ayur-brown);">Account Holder:</td>
-                                    <td style="padding: 8px 0;">AYURVEEZ / Dr. Ravi Shankar Sharma</td>
-                                </tr>
-                            </table>
+                    <div class="payment-method-card bank">
+                        <h4 style="color: var(--ayur-green); margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-university"></i> Bank Transfer
+                        </h4>
+                        <div class="payment-detail">
+                            <div style="margin-bottom: 10px;">
+                                <strong>Bank Name:</strong> State Bank of India (SBI)
+                            </div>
+                            <div style="margin-bottom: 10px;">
+                                <strong>Account Number:</strong> 
+                                <span style="font-family: 'Courier New', monospace; font-weight: bold; color: var(--ayur-green);">41139275178</span>
+                            </div>
+                            <div style="margin-bottom: 10px;">
+                                <strong>IFSC Code:</strong> 
+                                <span style="font-family: 'Courier New', monospace; font-weight: bold; color: var(--ayur-green);">SBIN0061746</span>
+                            </div>
+                            <div>
+                                <strong>Account Holder:</strong> AYURVEEZ / Dr. Ravi Shankar Sharma
+                            </div>
+                        </div>
+                        <div style="margin-top: 20px; padding: 15px; background: #fff3e0; border-radius: 8px; border-left: 4px solid #ff9800;">
+                            <p style="margin: 0; font-size: 0.9rem; color: #e65100;">
+                                <strong><i class="fas fa-clock" style="margin-right: 5px;"></i>Processing Time:</strong> 
+                                1-2 hours for bank transfers to reflect
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- WhatsApp Instructions -->
+            <div style="background: white; padding: 30px; border-radius: 10px; border: 2px solid #25D366; margin-bottom: 30px;">
+                <h4 style="text-align: center; color: #075E54; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                    <i class="fab fa-whatsapp" style="color: #25D366;"></i> WhatsApp Payment Confirmation
+                </h4>
+                
+                <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px; align-items: start;">
+                    <div style="text-align: center;">
+                        <div style="width: 60px; height: 60px; background: #25D366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 15px;">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <p style="font-weight: bold; color: #075E54;">Send to:</p>
+                        <p style="font-size: 1.2rem; font-weight: bold; color: var(--ayur-brown);">9376884568</p>
+                    </div>
+                    
+                    <div>
+                        <h5 style="color: var(--ayur-brown); margin-bottom: 15px;">Required Information:</h5>
+                        <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.95rem; line-height: 1.8;">
+                            Name: [Your Full Name]<br>
+                            Course: [Proff/Subject Name]<br>
+                            Amount: ₹[Amount Paid]<br>
+                            Transaction ID: [Last 4 digits/UTR]<br>
+                            Payment Method: [UPI/Bank Transfer]<br>
+                            Email: [Your Email Address]
                         </div>
                     </div>
                 </div>
                 
-                <!-- Important Instructions -->
-                <div style="margin-top: 30px; padding: 20px; background: #fff3e0; border-radius: 10px; border: 1px solid #ffb74d;">
-                    <h5 style="color: #e65100; margin-bottom: 15px; font-size: 1.1rem;">
-                        <i class="fas fa-exclamation-circle"></i> Important Instructions
-                    </h5>
-                    <ul style="margin: 0; padding-left: 20px; color: #5d4037;">
-                        <li>After payment, send screenshot to WhatsApp: <strong>9376884568</strong></li>
-                        <li>Include your full name and course details</li>
-                        <li>Access will be provided within 2-4 hours after verification</li>
-                        <li>Keep transaction ID/UTR number for reference</li>
-                    </ul>
+                <div style="margin-top: 20px; padding: 15px; background: #dcf8c6; border-radius: 8px; text-align: center;">
+                    <p style="margin: 0; color: #075E54; font-size: 0.9rem;">
+                        <i class="fas fa-shield-alt" style="margin-right: 5px;"></i>
+                        <strong>Security Note:</strong> Always send payment confirmation to our official WhatsApp number only
+                    </p>
                 </div>
             </div>
             
-            <!-- WhatsApp Message Format -->
-            <div style="margin-top: 40px; text-align: center;">
-                <h4 style="color: var(--ayur-brown); margin-bottom: 20px;">WhatsApp Payment Message Format:</h4>
-                <div style="background: white; padding: 20px; border-radius: 10px; margin: 15px auto; max-width: 500px; border: 2px solid #4CAF50; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
-                    <div style="font-family: 'Courier New', monospace; text-align: left; background: #f5f5f5; padding: 15px; border-radius: 5px;">
-                        <span style="color: #4CAF50; font-weight: bold;">Name:</span> [Your Full Name]<br>
-                        <span style="color: #4CAF50; font-weight: bold;">Course:</span> [Proff/Subject Name]<br>
-                        <span style="color: #4CAF50; font-weight: bold;">Amount:</span> ₹[Amount Paid]<br>
-                        <span style="color: #4CAF50; font-weight: bold;">Transaction ID:</span> [Last 4 digits/UTR]<br>
-                        <span style="color: #4CAF50; font-weight: bold;">Payment Method:</span> [UPI/Bank Transfer]<br>
-                        <span style="color: #4CAF50; font-weight: bold;">Email:</span> [For confirmation]
-                    </div>
-                    <div style="margin-top: 15px; padding: 10px; background: #e8f5e9; border-radius: 5px;">
-                        <p style="margin: 0; color: #2e7d32; font-size: 0.9rem;">
-                            <i class="fas fa-whatsapp" style="color: #25D366;"></i> 
-                            Send to: <strong>9376884568</strong>
-                        </p>
-                    </div>
-                </div>
+            <!-- Important Notes -->
+            <div style="background: #fff3e0; padding: 25px; border-radius: 10px; border-left: 5px solid var(--ayur-saffron);">
+                <h5 style="color: #e65100; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-exclamation-triangle"></i> Important Notes
+                </h5>
+                <ul style="margin: 0; padding-left: 20px; color: #5d4037;">
+                    <li>Access will be provided within <strong>2-4 hours</strong> after payment verification</li>
+                    <li>Keep your transaction ID/UTR number for reference</li>
+                    <li>For any payment issues, contact: <strong>9376884568</strong></li>
+                    <li>Check spam folder if you don't receive access email within 4 hours</li>
+                    <li>All payments are non-refundable once access is provided</li>
+                </ul>
             </div>
         </div>
     </section>
+
     <!-- UPDATED FOOTER -->
     <footer class="footer">
         <div class="footer-content">
