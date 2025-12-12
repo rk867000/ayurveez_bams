@@ -414,7 +414,7 @@
             display: flex;
             flex: 1;
             justify-content: space-between;
-            gap: 40px;
+            gap: 60px;
         }
         
         .quick-links, .contact-info {
@@ -462,12 +462,15 @@
             padding-left: 8px;
         }
         
+        /* UPDATED CONTACT DETAILS - FIXED SPACING */
         .contact-details {
             list-style: none;
+            margin: 0;
+            padding: 0;
         }
         
         .contact-details li {
-            margin-bottom: 8px; 
+            margin-bottom: 15px;
             display: flex;
             align-items: flex-start;
             gap: 12px;
@@ -476,23 +479,27 @@
         .contact-details i {
             color: var(--ayur-saffron);
             width: 20px;
-            margin-top: 3px;
+            margin-top: 2px;
             flex-shrink: 0;
         }
         
-        .contact-details div {
-            line-height: 1.2;
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
         }
         
-        .contact-details strong {
-            display: block;
-            margin-bottom: 1px;
+        .contact-item strong {
+            font-weight: bold;
             font-size: 0.9rem;
+            margin-bottom: 1px;
+            display: block;
         }
         
-        .contact-details span {
+        .contact-item span {
             font-size: 0.9rem;
             opacity: 0.9;
+            display: block;
         }
         
         .copyright {
@@ -1224,7 +1231,6 @@
                         <li><a href="resources.html">Free Resources</a></li>
                         <li><a href="blog.html">Blog</a></li>
                         <li><a href="guruji.html">GuruJi AI</a></li>
-                        <!-- Removed: Contact Support, First Proff, Second Proff, Final Proff, Payment Options, Enrollment Process -->
                     </ul>
                 </div>
                 
@@ -1233,27 +1239,27 @@
                     <ul class="contact-details">
                         <li>
                             <i class="fas fa-phone"></i>
-                            <div>
-                                <strong>Phone</strong><br>
+                            <div class="contact-item">
+                                <strong>Phone</strong>
                                 <span>9376884568</span>
                             </div>
                         </li>
                         <li>
                             <i class="fas fa-envelope"></i>
-                            <div>
-                                <strong>Email</strong><br>
+                            <div class="contact-item">
+                                <strong>Email</strong>
                                 <span>ayurveez@gmail.com</span>
                             </div>
                         </li>
                         <li>
                             <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <strong>Address</strong><br>
+                            <div class="contact-item">
+                                <strong>Address</strong>
                                 <span>Dehradun, Uttarakhand</span>
                             </div>
                         </li>
                     </ul>
-                    <div style="text-align: center; margin-top: 20px;">
+                    <div style="text-align: center; margin-top: 15px;">
                         <a href="contact.html" class="btn btn-primary" style="display: inline-block; font-size: 0.9rem; padding: 8px 25px;">
                             <i class="fas fa-headset"></i> Get Support
                         </a>
