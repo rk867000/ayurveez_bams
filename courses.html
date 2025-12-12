@@ -32,15 +32,15 @@
             line-height: 1.6;
         }
         
-        /* Header Styles */
+        /* Header - Updated to match your image - SAME AS INDEX.HTML */
         .header {
-            background: linear-gradient(135deg, var(--ayur-green) 0%, var(--ayur-saffron) 100%);
-            color: white;
-            padding: 1rem 5%;
+            background: white;
+            color: var(--ayur-brown);
+            padding: 0.8rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -52,48 +52,101 @@
             gap: 15px;
         }
         
-        .logo h1 {
+        .logo-text h1 {
             font-size: 1.8rem;
-            background: linear-gradient(to right, white, #FFE5B4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .logo-icon {
-            font-size: 2rem;
-            color: var(--ayur-gold);
+            color: var(--ayur-green);
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
         
         .tagline {
-            font-style: italic;
-            font-size: 0.9rem;
-            opacity: 0.9;
+            font-size: 0.85rem;
+            color: var(--ayur-saffron);
+            display: block;
+            font-weight: 500;
         }
         
-        nav ul {
+        /* Navigation - Updated professional styling - SAME AS INDEX.HTML */
+        nav {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-menu {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 25px;
+            align-items: center;
         }
         
         nav a {
-            color: white;
+            color: var(--ayur-brown);
             text-decoration: none;
             font-weight: 500;
-            padding: 8px 15px;
-            border-radius: 5px;
+            padding: 8px 0;
+            position: relative;
             transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--ayur-saffron);
+            transition: width 0.3s;
         }
         
         nav a:hover {
-            background: rgba(255,255,255,0.2);
+            color: var(--ayur-saffron);
+        }
+        
+        nav a:hover::after {
+            width: 100%;
         }
         
         .cta-button {
-            background: var(--ayur-gold);
-            color: var(--ayur-brown) !important;
-            font-weight: bold;
+            background: linear-gradient(135deg, var(--ayur-saffron), #ff8c00);
+            color: white !important;
+            font-weight: 600;
             padding: 10px 25px !important;
+            border-radius: 5px;
+            border: none;
+            margin-left: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(255, 153, 51, 0.2);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 153, 51, 0.3);
+        }
+        
+        .cta-button::after {
+            display: none;
+        }
+        
+        /* Updated hamburger menu - right side - SAME AS INDEX.HTML */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+            background: none;
+            border: none;
+            padding: 5px;
+            margin-left: 15px;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--ayur-brown);
+            border-radius: 2px;
+            transition: 0.3s;
         }
         
         /* Main Content */
@@ -453,69 +506,415 @@
             color: #d32f2f;
         }
         
-        /* Footer */
+        /* UPDATED FOOTER LAYOUT - SAME AS INDEX.HTML */
         .footer {
             background: var(--ayur-brown);
             color: white;
-            padding: 60px 5% 30px;
-            margin-top: 60px;
+            padding: 50px 5% 30px;
         }
         
         .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-brand {
+            flex: 0 0 300px;
         }
         
         .footer-logo {
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: var(--ayur-gold);
-            margin-bottom: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
         }
         
-        .social-links {
+        .footer-tagline {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .social-icons {
             display: flex;
             gap: 15px;
             margin-top: 20px;
         }
         
-        .social-links a {
+        .social-icons a {
             color: white;
-            font-size: 1.2rem;
-            transition: color 0.3s;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
-        .social-links a:hover {
+        .social-icons a:hover {
+            background: var(--ayur-saffron);
+            transform: translateY(-3px);
+        }
+        
+        .footer-sections {
+            display: flex;
+            flex: 1;
+            justify-content: space-between;
+            gap: 60px;
+        }
+        
+        .quick-links, .contact-info {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer h4 {
+            color: var(--ayur-gold);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--ayur-saffron);
+        }
+        
+        .quick-links-list {
+            list-style: none;
+        }
+        
+        .quick-links-list li {
+            margin-bottom: 12px;
+        }
+        
+        .quick-links-list a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: block;
+            padding: 5px 0;
+            font-size: 0.95rem;
+        }
+        
+        .quick-links-list a:hover {
             color: var(--ayur-saffron);
+            padding-left: 8px;
+        }
+        
+        /* UPDATED CONTACT DETAILS - FIXED SPACING - SAME AS INDEX.HTML */
+        .contact-details {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .contact-details li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .contact-details i {
+            color: var(--ayur-saffron);
+            width: 20px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+        
+        .contact-item strong {
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 1px;
+            display: block;
+        }
+        
+        .contact-item span {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            display: block;
         }
         
         .copyright {
             text-align: center;
-            padding-top: 30px;
+            padding-top: 40px;
             border-top: 1px solid rgba(255,255,255,0.1);
             font-size: 0.9rem;
             opacity: 0.8;
         }
         
-        /* Responsive */
+        /* Updated Professional Chatbot - FIXED - SAME AS INDEX.HTML */
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .chatbot-toggle {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--ayur-green), var(--ayur-saffron));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .chatbot-window {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            width: 380px;
+            height: 520px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .chatbot-header {
+            background: linear-gradient(135deg, var(--ayur-green), var(--ayur-saffron));
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            flex-shrink: 0;
+        }
+        
+        .chatbot-close {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .chatbot-close:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .chatbot-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f9f9f9;
+            min-height: 200px;
+        }
+        
+        .message {
+            margin-bottom: 15px;
+            max-width: 85%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            word-wrap: break-word;
+            line-height: 1.4;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .bot-message {
+            background: white;
+            border: 1px solid #e0e0e0;
+            align-self: flex-start;
+            margin-right: auto;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .user-message {
+            background: linear-gradient(135deg, var(--ayur-saffron), #ffb347);
+            color: white;
+            align-self: flex-end;
+            margin-left: auto;
+            box-shadow: 0 2px 8px rgba(255, 153, 51, 0.2);
+        }
+        
+        .quick-questions {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #eee;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            max-height: 150px;
+            overflow-y: auto;
+            flex-shrink: 0;
+        }
+        
+        .quick-question-btn {
+            padding: 8px 10px;
+            background: #f5f5f5;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.8rem;
+            color: var(--ayur-brown);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            min-height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .quick-question-btn:hover {
+            background: var(--ayur-saffron);
+            color: white;
+            border-color: var(--ayur-saffron);
+            transform: translateY(-2px);
+        }
+        
+        .chatbot-input {
+            display: flex;
+            padding: 12px;
+            background: white;
+            border-top: 1px solid #eee;
+            flex-shrink: 0;
+        }
+        
+        .chatbot-input input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            outline: none;
+            font-size: 0.9rem;
+        }
+        
+        .chatbot-input button {
+            background: var(--ayur-green);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 0 20px;
+            margin-left: 10px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            min-width: 60px;
+        }
+        
+        .chatbot-input button:hover {
+            background: #0d7a08;
+        }
+        
+        /* Responsive Design - Updated for mobile */
         @media (max-width: 992px) {
-            .subjects-grid {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            .pricing-comparison {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+            
+            .footer-content {
+                gap: 40px;
+            }
+            
+            .footer-sections {
+                gap: 30px;
             }
         }
         
         @media (max-width: 768px) {
             .header {
-                flex-direction: column;
-                gap: 20px;
-                padding: 15px 5%;
+                padding: 0.8rem 5%;
             }
             
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
+            /* Professional hamburger on right side - SAME AS INDEX.HTML */
+            .hamburger {
+                display: flex;
+                order: 2;
+                margin-left: auto;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                flex-direction: column;
+                background: white;
+                width: 280px;
+                height: calc(100vh - 70px);
+                padding: 30px 25px;
+                transition: 0.3s;
+                gap: 0;
+                z-index: 999;
+                overflow-y: auto;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            }
+            
+            .nav-menu.active {
+                right: 0;
+                left: auto;
+            }
+            
+            .nav-menu li {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+            
+            nav a {
+                padding: 12px 15px;
+                text-align: left;
+                border: 1px solid rgba(0,0,0,0.05);
+                display: block;
+                border-radius: 5px;
+            }
+            
+            .cta-button {
+                margin-left: 0;
+                margin-top: 10px;
+                width: 100%;
+                text-align: center;
             }
             
             .page-title {
@@ -530,9 +929,80 @@
                 padding: 10px 20px;
                 font-size: 0.9rem;
             }
+            
+            .subjects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            /* UPDATED MOBILE FOOTER - Quick Links and Contact Us side by side - SAME AS INDEX.HTML */
+            .footer-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .footer-brand {
+                flex: 0 0 auto;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .footer h4::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .footer-sections {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                gap: 30px;
+                width: 100%;
+            }
+            
+            .quick-links, .contact-info {
+                flex: 1;
+                min-width: 0;
+                text-align: center;
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+            
+            .contact-details li {
+                justify-content: center;
+                text-align: center;
+            }
+            
+            .quick-links-list a {
+                text-align: center;
+            }
+            
+            /* Chatbot adjustments for mobile - SAME AS INDEX.HTML */
+            .chatbot-window {
+                width: 90vw;
+                right: 5vw;
+                height: 70vh;
+                bottom: 80px;
+            }
+            
+            .chatbot-toggle {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            
+            .quick-questions {
+                grid-template-columns: 1fr;
+                max-height: 200px;
+            }
         }
         
         @media (max-width: 576px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
             .subjects-grid {
                 grid-template-columns: 1fr;
             }
@@ -540,31 +1010,70 @@
             .modal-content {
                 max-height: 90vh;
             }
+            
+            /* Mobile footer adjustments for very small screens - SAME AS INDEX.HTML */
+            .footer-sections {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .quick-links, .contact-info {
+                width: 100%;
+            }
+            
+            .quick-questions {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Logo Placeholder - SAME AS INDEX.HTML */
+        .logo-placeholder {
+            width: 50px;
+            height: 50px;
+            background: var(--ayur-gold);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header - EXACTLY SAME AS INDEX.HTML -->
     <header class="header">
         <div class="logo">
-            <div class="logo-icon">
-                <i class="fas fa-leaf"></i>
+            <!-- Replace this div with your logo image -->
+            <div class="logo-placeholder">
+                A
             </div>
-            <div>
+            <!--
+            <img src="your-logo.png" alt="AYURVEEZ Logo" class="logo-img">
+            -->
+            <div class="logo-text">
                 <h1>AYURVEEZ</h1>
-                <div class="tagline">BAMS Classes Made Easy</div>
+                <span class="tagline">Where Ayurveda Meets Modern Learning</span>
             </div>
         </div>
         
         <nav>
-            <ul>
+            <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="courses.html" style="background: rgba(255,255,255,0.2);">Courses</a></li>
+                <li><a href="courses.html">Courses</a></li>
                 <li><a href="resources.html">Free Resources</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="guruji.html">GuruJi AI</a></li>
-                <li><a href="dashboard.html" class="cta-button">My Dashboard</a></li>
+                <li><a href="contact.html" class="cta-button">Enroll Now</a></li>
             </ul>
+            
+            <!-- Updated hamburger menu - right side - EXACTLY SAME AS INDEX.HTML -->
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </nav>
     </header>
 
@@ -1275,53 +1784,323 @@
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- UPDATED FOOTER - EXACTLY SAME AS INDEX.HTML -->
     <footer class="footer">
         <div class="footer-content">
-            <div>
+            <div class="footer-brand">
                 <div class="footer-logo">AYURVEEZ</div>
-                <p>BAMS Classes Made Easy</p>
-                <p>Created by Dr. Ravi Shankar Sharma<br>
-                BAMS 2nd Prof, Uttarakhand Ayurveda University, Dehradun</p>
-                <div class="social-links">
-                    <a href="https://wa.me/918271890090"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://t.me/ayurveez"><i class="fab fa-telegram"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+                <p class="footer-tagline">Where Ayurveda Meets Modern Learning</p>
+                <p style="font-size: 0.9rem; opacity: 0.9; line-height: 1.5; margin-bottom: 10px;">
+                    Created by Dr. Ravi Shankar Sharma<br>
+                    BAMS 2nd Prof, Uttarakhand Ayurveda University
+                </p>
+                <div class="social-icons">
+                    <a href="https://wa.me/9376884568" target="_blank" title="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://t.me/ayurveez" target="_blank" title="Telegram">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                    <a href="https://www.instagram.com/ayurveez_bams" target="_blank" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@ayurveez" target="_blank" title="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
                 </div>
             </div>
             
-            <div>
-                <h4>Quick Links</h4>
-                <ul style="list-style: none; margin-top: 15px;">
-                    <li><a href="index.html" style="color: white; text-decoration: none; display: block; padding: 5px 0;">Home</a></li>
-                    <li><a href="courses.html" style="color: white; text-decoration: none; display: block; padding: 5px 0;">Courses</a></li>
-                    <li><a href="resources.html" style="color: white; text-decoration: none; display: block; padding: 5px 0;">Free Resources</a></li>
-                    <li><a href="blog.html" style="color: white; text-decoration: none; display: block; padding: 5px 0;">Blog</a></li>
-                </ul>
-            </div>
-            
-            <div>
-                <h4>Contact & Support</h4>
-                <p style="margin-top: 15px;">
-                    <i class="fas fa-phone"></i> 8271890090 (WhatsApp)<br>
-                    <i class="fas fa-envelope"></i> ayurveez@gmail.com<br>
-                    <i class="fas fa-map-marker-alt"></i> Dehradun, Uttarakhand
-                </p>
-                <a href="https://wa.me/918271890090" class="btn btn-primary" style="margin-top: 15px;">
-                    <i class="fab fa-whatsapp"></i> WhatsApp Support
-                </a>
+            <div class="footer-sections">
+                <div class="quick-links">
+                    <h4>Quick Links</h4>
+                    <ul class="quick-links-list">
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="resources.html">Free Resources</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="guruji.html">GuruJi AI</a></li>
+                    </ul>
+                </div>
+                
+                <div class="contact-info">
+                    <h4>Contact Us</h4>
+                    <ul class="contact-details">
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <div class="contact-item">
+                                <strong>WhatsApp</strong>
+                                <span>9376884568</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <div class="contact-item">
+                                <strong>Email</strong>
+                                <span>ayurveez@gmail.com</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="contact-item">
+                                <strong>Address</strong>
+                                <span>Dehradun, Uttarakhand</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div style="text-align: center; margin-top: 15px;">
+                        <a href="https://whatsform.com/6Ih-pp" class="btn btn-primary" style="display: inline-block; font-size: 0.9rem; padding: 8px 25px;">
+                            <i class="fas fa-headset"></i> Get Support
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
         
         <div class="copyright">
-            © 2024 AYURVEEZ. All rights reserved. | BAMS Classes Made Easy<br>
-            Uttarakhand Ayurveda University, Dehradun
+            © 2024 AYURVEEZ. All rights reserved. | BAMS Classes Made Easy
         </div>
     </footer>
 
+    <!-- Floating Chatbot - EXACTLY SAME AS INDEX.HTML -->
+    <div class="chatbot-container">
+        <button class="chatbot-toggle" id="chatbotToggle">
+            <i class="fas fa-comments"></i>
+        </button>
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <h3 style="margin: 0; font-size: 1.1rem;">AYURVEEZ Support</h3>
+                <p style="margin: 5px 0 0; font-size: 0.8rem; opacity: 0.9;">24/7 Customer Support</p>
+                <button class="chatbot-close" id="chatbotClose">&times;</button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="message bot-message">
+                    Hello! I'm your AYURVEEZ assistant. How can I help you today? Click on any question below to get instant answers.
+                </div>
+            </div>
+            <div class="quick-questions" id="quickQuestions">
+                <button class="quick-question-btn" data-question="1">What courses do you offer?</button>
+                <button class="quick-question-btn" data-question="2">How do I make payment?</button>
+                <button class="quick-question-btn" data-question="3">When will I get access?</button>
+                <button class="quick-question-btn" data-question="4">Do you provide certificates?</button>
+                <button class="quick-question-btn" data-question="5">What is your refund policy?</button>
+                <button class="quick-question-btn" data-question="6">How to download material?</button>
+                <button class="quick-question-btn" data-question="7">Is there a mobile app?</button>
+                <button class="quick-question-btn" data-question="8">Do you offer EMI options?</button>
+                <button class="quick-question-btn" data-question="9">How to contact Dr. Ravi?</button>
+                <button class="quick-question-btn" data-question="10">What is GuruJi AI?</button>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbotInput" placeholder="Type your question...">
+                <button id="chatbotSend">Send</button>
+            </div>
+        </div>
+    </div>
+
     <!-- JavaScript -->
     <script>
+        // Hamburger Menu Toggle - Now on right side - SAME AS INDEX.HTML
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!navMenu.contains(event.target) && !hamburger.contains(event.target)) {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        });
+        
+        // Close menu on escape key
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        });
+
+        // Chatbot Functionality - FIXED LAYOUT - SAME AS INDEX.HTML
+        const chatbotToggle = document.getElementById('chatbotToggle');
+        const chatbotWindow = document.getElementById('chatbotWindow');
+        const chatbotClose = document.getElementById('chatbotClose');
+        const chatbotMessages = document.getElementById('chatbotMessages');
+        const chatbotInput = document.getElementById('chatbotInput');
+        const chatbotSend = document.getElementById('chatbotSend');
+        const quickQuestions = document.getElementById('quickQuestions');
+        
+        // Updated chatbot responses (no refund option)
+        const chatbotResponses = {
+            1: "We offer comprehensive BAMS preparation courses for all professional years:\n\n• First Professional (1st Year) - ₹1,999\n• Second Professional (2nd Year) - ₹2,499\n• Final Professional (3rd-4th Year) - ₹3,999\n\nYou can also purchase individual subjects starting from ₹499 each.",
+            
+            2: "Payment Process:\n1. Choose your course/subject\n2. Make payment via UPI (ayurveez@oksbi) or bank transfer\n3. Send payment screenshot to WhatsApp: 9376884568\n4. Include your name, course, amount, transaction ID, and email\n5. Receive access code within 2-4 hours",
+            
+            3: "Access is granted within 2-4 hours after we verify your payment. We process requests daily from 9 AM to 10 PM. You'll receive a unique access code via WhatsApp/email to login to our learning dashboard.",
+            
+            4: "Yes! Upon course completion, you receive a certificate of completion from AYURVEEZ signed by Dr. Ravi Shankar Sharma. This certificate is widely recognized for BAMS preparation and can be included in your portfolio.",
+            
+            5: "Our courses are non-refundable once access has been provided. We ensure you can preview the course content before purchase through our free resources and demo videos. For any technical issues, we provide full support via WhatsApp: 9376884568.",
+            
+            6: "To download study material:\n1. Login to your AYURVEEZ dashboard\n2. Go to 'My Courses' section\n3. Click on the subject\n4. Find the 'Downloads' tab\n5. Click on PDF/notes to download\nIf facing issues, WhatsApp us at 9376884568.",
+            
+            7: "Currently we have a mobile-responsive web platform that works perfectly on all devices. We're developing a dedicated mobile app which will launch by December 2024. You'll be notified when it's available.",
+            
+            8: "Yes! We offer EMI options through our partner platforms. You can pay in 3-6 monthly installments. Contact us at 9376884568 to arrange EMI payment. Additional processing fee of 2% applies for EMI payments.",
+            
+            9: "Dr. Ravi is available for:\n• Direct doubt-solving calls for enrolled students\n• Weekly live Q&A sessions (schedule in dashboard)\n• Email: ayurveez@gmail.com\n• WhatsApp: 9376884568 (for enrolled students only)\nPlease mention your access code when contacting.",
+            
+            10: "GuruJi AI is our 24/7 AI study companion that provides:\n• Instant doubt solving in Ayurvedic concepts\n• Personalized study plans\n• Exam preparation strategies\n• Stress management tips\n• Revision schedules\nAccess it from your dashboard or the GuruJi page."
+        };
+        
+        let isChatbotOpen = false;
+        
+        // Toggle chatbot window
+        chatbotToggle.addEventListener('click', () => {
+            isChatbotOpen = !isChatbotOpen;
+            chatbotWindow.style.display = isChatbotOpen ? 'flex' : 'none';
+            // Scroll to bottom when opening
+            if (isChatbotOpen) {
+                setTimeout(() => {
+                    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+                }, 100);
+            }
+        });
+        
+        chatbotClose.addEventListener('click', () => {
+            isChatbotOpen = false;
+            chatbotWindow.style.display = 'none';
+        });
+        
+        // Handle quick question buttons
+        document.querySelectorAll('.quick-question-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const questionNum = this.getAttribute('data-question');
+                const questionText = this.textContent;
+                
+                // Add user question
+                addMessage(questionText, 'user');
+                
+                // Disable all quick question buttons temporarily
+                document.querySelectorAll('.quick-question-btn').forEach(btn => {
+                    btn.style.opacity = '0.6';
+                    btn.style.pointerEvents = 'none';
+                });
+                
+                // Add bot response after delay
+                setTimeout(() => {
+                    if (chatbotResponses[questionNum]) {
+                        addMessage(chatbotResponses[questionNum], 'bot');
+                    } else {
+                        addMessage("Please contact us directly at WhatsApp: 9376884568 or email: ayurveez@gmail.com for assistance with this question.", 'bot');
+                    }
+                    
+                    // Re-enable buttons after response
+                    setTimeout(() => {
+                        document.querySelectorAll('.quick-question-btn').forEach(btn => {
+                            btn.style.opacity = '1';
+                            btn.style.pointerEvents = 'auto';
+                        });
+                    }, 1000);
+                    
+                    // Auto-scroll
+                    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+                }, 800);
+            });
+        });
+        
+        // Handle send button
+        chatbotSend.addEventListener('click', sendMessage);
+        
+        // Handle enter key in input
+        chatbotInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+        
+        function sendMessage() {
+            const userMessage = chatbotInput.value.trim();
+            if (userMessage) {
+                addMessage(userMessage, 'user');
+                chatbotInput.value = '';
+                
+                // Show typing indicator
+                const typingIndicator = document.createElement('div');
+                typingIndicator.classList.add('message', 'bot-message');
+                typingIndicator.innerHTML = '<i>Typing...</i>';
+                chatbotMessages.appendChild(typingIndicator);
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+                
+                // Simulate bot response after delay
+                setTimeout(() => {
+                    chatbotMessages.removeChild(typingIndicator);
+                    
+                    // Check if it's a common question
+                    let foundResponse = false;
+                    for (const [key, response] of Object.entries(chatbotResponses)) {
+                        const questionText = document.querySelector(`[data-question="${key}"]`).textContent.toLowerCase();
+                        if (userMessage.toLowerCase().includes(questionText.substring(0, 15).toLowerCase())) {
+                            addMessage(response, 'bot');
+                            foundResponse = true;
+                            break;
+                        }
+                    }
+                    
+                    if (!foundResponse) {
+                        addMessage("Thank you for your question. For personalized assistance, please contact us directly:\n\n📱 WhatsApp: 9376884568\n📧 Email: ayurveez@gmail.com\n\nWe'll respond within 2-4 hours.", 'bot');
+                    }
+                    
+                    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+                }, 1500);
+            }
+        }
+        
+        // Function to add messages to chat
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.classList.add(sender === 'user' ? 'user-message' : 'bot-message');
+            
+            // Format text with line breaks
+            const formattedText = text.replace(/\n/g, '<br>');
+            messageDiv.innerHTML = formattedText;
+            
+            chatbotMessages.appendChild(messageDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+        
+        // Close chatbot when clicking outside
+        document.addEventListener('click', (event) => {
+            if (isChatbotOpen && 
+                !chatbotWindow.contains(event.target) && 
+                !chatbotToggle.contains(event.target)) {
+                isChatbotOpen = false;
+                chatbotWindow.style.display = 'none';
+            }
+        });
+        
+        // Prevent chatbot from closing when clicking inside
+        chatbotWindow.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+        
+        // Initial message
+        setTimeout(() => {
+            addMessage("Click on any question above for instant answers, or type your question below.", 'bot');
+        }, 500);
+        
+        // Original courses.html JavaScript functionality
         // Proff Navigation
         document.addEventListener('DOMContentLoaded', function() {
             // Add click events to proff tabs
@@ -1479,8 +2258,8 @@
                 <div style="margin-top: 30px; padding: 20px; background: var(--ayur-light-green); border-radius: 10px;">
                     <h4 style="color: var(--ayur-green); margin-bottom: 10px;">How to Access:</h4>
                     <ol style="padding-left: 20px;">
-                        <li>Pay ₹${currentPrice} via UPI to <strong>thersk@axl</strong></li>
-                        <li>Send payment screenshot to WhatsApp: <strong>8271890090</strong></li>
+                        <li>Pay ₹${currentPrice} via UPI to <strong>ayurveez@oksbi</strong></li>
+                        <li>Send payment screenshot to WhatsApp: <strong>9376884568</strong></li>
                         <li>Mention subject name: <strong>${subjectName}</strong></li>
                         <li>Receive access code within 2 hours</li>
                         <li>Use code to access full content on dashboard</li>
@@ -1500,8 +2279,8 @@
         // Buy Current Subject
         function buyCurrentSubject() {
             const message = `To purchase ${currentSubject}:\n\n` +
-                          `1. Pay ₹${currentPrice} to UPI: thersk@axl\n` +
-                          `2. Send screenshot to WhatsApp: 8271890090\n` +
+                          `1. Pay ₹${currentPrice} to UPI: ayurveez@oksbi\n` +
+                          `2. Send screenshot to WhatsApp: 9376884568\n` +
                           `3. Mention: "Buying ${currentSubject} (${currentProff.toUpperCase()} PROFF)"\n` +
                           `4. We'll send access code within 2 hours.`;
             
@@ -1512,8 +2291,8 @@
         // Buy Proff Package
         function buyProffPackage(proffName, price) {
             const message = `To purchase ${proffName} COMPLETE PACKAGE:\n\n` +
-                          `1. Pay ₹${price} to UPI: thersk@axl\n` +
-                          `2. Send screenshot to WhatsApp: 8271890090\n` +
+                          `1. Pay ₹${price} to UPI: ayurveez@oksbi\n` +
+                          `2. Send screenshot to WhatsApp: 9376884568\n` +
                           `3. Mention: "Buying ${proffName} Complete Package"\n` +
                           `4. We'll send dashboard access code within 2 hours.\n\n` +
                           `*Includes all subjects, priority support, and doubt-solving calls.`;
